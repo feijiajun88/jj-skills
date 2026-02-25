@@ -1,15 +1,13 @@
 ---
 name: bilibili-analyzer
 description: 自动分析B站视频内容，下载视频并拆解成帧图片，使用AI分析并生成详细的专题文档或实操教程。
-metadata:
-  short-description: B站视频AI分析工具
-source:
-  - name: FFmpeg
-    repository: https://github.com/FFmpeg/FFmpeg
-    documentation: https://ffmpeg.org/documentation.html
-    license: LGPL/GPL
-  - name: Bilibili API
-    documentation: https://github.com/SocialSisterYi/bilibili-API-collect
+github_url: "https://github.com/feijiajun88/jj-skills"
+github_hash: 9cdd4d01627842149b0049645afb95783e2cf689
+version: 1.0.0
+created_at: 2026-02-25
+updated_at: 2026-02-25
+license: LGPL/GPL
+metadata: 
 ---
 
 # Bilibili Video Analyzer

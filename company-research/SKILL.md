@@ -1,15 +1,12 @@
 ---
 name: company-research
-description: Company research using Exa search. Finds company info, competitors, news, tweets, financials, LinkedIn profiles, builds company lists.
-triggers:
-  - company research
-  - competitor analysis
-  - market research
-  - find companies
-  - research company
-  - company intel
-  - search companies
-  - company homepages
+description: "Company research using Exa search. Finds company info, competitors, news, tweets, financials, LinkedIn profiles, builds company lists."
+github_url: "https://github.com/feijiajun88/jj-skills"
+github_hash: 9cdd4d01627842149b0049645afb95783e2cf689
+version: 1.0.0
+created_at: 2026-02-25
+updated_at: 2026-02-25
+triggers: 
 requires_mcp: exa
 context: fork
 ---

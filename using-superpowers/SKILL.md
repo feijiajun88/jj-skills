@@ -1,6 +1,11 @@
 ---
 name: using-superpowers
-description: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions
+description: "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions"
+github_url: "https://github.com/feijiajun88/jj-skills"
+github_hash: 9cdd4d01627842149b0049645afb95783e2cf689
+version: 1.0.0
+created_at: 2026-02-25
+updated_at: 2026-02-25
 ---
 
 <EXTREMELY-IMPORTANT>
