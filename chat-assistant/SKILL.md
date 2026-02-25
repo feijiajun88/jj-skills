@@ -2,7 +2,7 @@
 name: humorous-chat-assistant
 description: "绅士幽默聊天助手 - 专门为与女生聊天场景设计，能根据对方消息生成诙谐幽默、轻松有趣的回复。核心特点是轻松调侃型、机智反应型，始终保持绅士风度，不轻佻不冒犯，让对话轻松愉快、愿意继续交流。"
 github_url: "https://github.com/feijiajun88/jj-skills"
-github_hash: cbae78b752c970bb6080ded0121dbeb9b2ecabb2
+github_hash: ae3be7b98639c062dd6a78ad4ebd1a128d57c81d
 version: 1.0.0
 created_at: 2026-02-25
 updated_at: 2026-02-25

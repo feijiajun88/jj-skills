@@ -2,7 +2,7 @@
 name: personal-background-check
 description: 司法信息查询技能。通过整合中国各级法院的公开信息平台，查询个人司法信息，包括被执行人信息、失信被执行人名单、限制消费令和裁判文书等信息。适用于客户背景调查（KYC/尽职调查）、个人风险筛查、供应商/合作伙伴背景核查等场景。
 github_url: https://github.com/feijiajun88/jj-skills
-github_hash: cbae78b752c970bb6080ded0121dbeb9b2ecabb2
+github_hash: ae3be7b98639c062dd6a78ad4ebd1a128d57c81d
 version: 2.0.0
 created_at: 2026-02-25
 updated_at: 2026-02-25

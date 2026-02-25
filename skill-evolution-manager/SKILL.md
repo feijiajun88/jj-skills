@@ -2,7 +2,7 @@
 name: skill-evolution-manager
 description: "The evolution hub for the entire AI skills system. It is responsible not only for optimizing individual Skills but also for cross-Skill experience review and sedimentation."
 github_url: "https://github.com/feijiajun88/jj-skills"
-github_hash: cbae78b752c970bb6080ded0121dbeb9b2ecabb2
+github_hash: ae3be7b98639c062dd6a78ad4ebd1a128d57c81d
 version: 1.0.0
 created_at: 2026-02-25
 updated_at: 2026-02-25
