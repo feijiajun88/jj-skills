@@ -2,7 +2,7 @@
 name: industry-survey-guide
 description: 普道小微贷款行业调查指引技能，为信贷员提供贷前行业调查的标准化流程，整合内置知识库与联网搜索，输出结构化Markdown报告。
 github_url: "https://github.com/feijiajun88/jj-skills"
-github_hash: 15a2e652575cb62b329b9aedc286a353338d95da
+github_hash: cbae78b752c970bb6080ded0121dbeb9b2ecabb2
 version: 1.0.0
 created_at: 2026-02-25
 updated_at: 2026-02-25

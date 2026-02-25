@@ -2,7 +2,7 @@
 name: news-tracker
 description: 新闻追踪与动态获取工具。获取特定主题的最新新闻，支持基于最新信息的智能问答。当用户需要：(1) 查询某领域最新新闻（如AI、科技、金融）(2) 了解某公司动态（如OpenAI、Google、Tesla）(3) 追踪某人物近况（如马斯克、Sam Altman）(4) 获取某地区新闻（如中国科技新闻）(5) 了解某产品最新情况（如ChatGPT、Claude）(6) 追踪某事件进展（如CES展会）(7) 询问需要最新信息才能回答的问题时触发。触发关键词包括：新闻、动态、最新、最近、近况、进展、资讯等。
 github_url: https://github.com/feijiajun88/jj-skills
-github_hash: 15a2e652575cb62b329b9aedc286a353338d95da
+github_hash: cbae78b752c970bb6080ded0121dbeb9b2ecabb2
 version: 1.0.0
 created_at: 2026-02-25
 updated_at: 2026-02-25
