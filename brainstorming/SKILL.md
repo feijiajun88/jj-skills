@@ -2,7 +2,7 @@
 name: brainstorming
 description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
 github_url: "https://github.com/feijiajun88/jj-skills"
-github_hash: 9cdd4d01627842149b0049645afb95783e2cf689
+github_hash: 15a2e652575cb62b329b9aedc286a353338d95da
 version: 1.0.0
 created_at: 2026-02-25
 updated_at: 2026-02-25
