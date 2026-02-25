@@ -1,0 +1,34 @@
+{
+  "_comment": "验证码识别 API 配置文件",
+  "_note": "将 enabled 设置为 true 并填入相应的 API 密钥后即可使用自动识别功能",
+
+  "baidu": {
+    "_description": "百度智能云 OCR",
+    "enabled": false,
+    "api_key": "YOUR_BAIDU_API_KEY",
+    "secret_key": "YOUR_BAIDU_SECRET_KEY",
+    "endpoint": "https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic",
+    "_note": "申请地址: https://cloud.baidu.com/product/ocr/general",
+    "_install": "pip install baidu-aip"
+  },
+
+  "aliyun": {
+    "_description": "阿里云文字识别",
+    "enabled": false,
+    "access_key_id": "YOUR_ALIYUN_ACCESS_KEY_ID",
+    "access_key_secret": "YOUR_ALIYUN_ACCESS_KEY_SECRET",
+    "endpoint": "https://ocr.cn-shanghai.aliyuncs.com/",
+    "_note": "申请地址: https://www.aliyun.com/product/ocr",
+    "_install": "pip install aliyun-python-sdk-core aliyun-python-sdk-ocr"
+  },
+
+  "tencent": {
+    "_description": "腾讯云文字识别",
+    "enabled": false,
+    "secret_id": "YOUR_TENCENT_SECRET_ID",
+    "secret_key": "YOUR_TENCENT_SECRET_KEY",
+    "endpoint": "captcha.tencentcloudapi.com",
+    "_note": "申请地址: https://cloud.tencent.com/product/ocr",
+    "_install": "pip install tencentcloud-sdk-python"
+  }
+}

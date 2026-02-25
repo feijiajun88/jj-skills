@@ -1,0 +1,241 @@
+{
+  "version": "1.1.0",
+  "last_updated": "2026-02-04",
+  "experience_records": [
+    {
+      "id": "EXP_20260204_001",
+      "date": "2026-02-04",
+      "case_type": "假流水识别",
+      "title": "低级假流水识别经验总结",
+      "severity": "critical",
+      "case_summary": "通过分析一份声称是真实银行流水的Excel文件，识别出10大造假破绽，确认为低级假流水",
+      "key_findings": [
+        "余额计算完全错误，相差149万元",
+        "净流出128万但余额反而增加123万",
+        "日均余额174万但季度利息为0",
+        "74.18%收入来自单笔交易",
+        "连续4个月收入为0",
+        "交易摘要企业名称过于规范完整",
+        "对手信息设计痕迹明显"
+      ],
+      "lessons_learned": [
+        {
+          "category": "余额计算验证",
+          "lesson": "必须验证 期末余额 = 期初余额 + 总收入 - 总支出 的数学等式，任何偏差都可能是造假的证据",
+          "method": "逐笔计算余额并与记录余额对比，差异超过0.01元即判定为异常"
+        },
+        {
+          "category": "逻辑矛盾识别",
+          "lesson": "净流入为负数时，期末余额不应该增加，这是最明显的逻辑矛盾",
+          "method": "计算净流入 = 总收入 - 总支出，检查余额变化方向是否与净流入符号一致"
+        },
+        {
+          "category": "利息记录验证",
+          "lesson": "日均余额高但利息为0是明显的造假特征，真实银行季度利息 = 日均余额 × 季度利率",
+          "method": "计算预期利息 = 日均余额 × 0.003（假设季度利率0.3%），与实际利息对比"
+        },
+        {
+          "category": "交易集中度分析",
+          "lesson": "单一交易对手占比超过70%是异常信号，尤其是单笔交易占全部收入70%以上",
+          "method": "统计前五大收入对手占比，占比过高需重点核实"
+        },
+        {
+          "category": "收入连续性检查",
+          "lesson": "正常经营企业不应该出现连续4个月收入为0的情况",
+          "method": "统计连续收入为0的月份数，超过2个月即需关注"
+        },
+        {
+          "category": "交易摘要设计识别",
+          "lesson": "假流水的企业名称通常过于完整规范，如'吴忠市绿洲牧场'、'利通区金银滩镇团庄村村民委员会'这种全名在日常摘要中较少见",
+          "method": "检查交易摘要长度和规范性，过于完整或过长的名称需警惕"
+        },
+        {
+          "category": "对手信息真实性验证",
+          "lesson": "必须通过企查查等工具验证主要交易对手的真实性，无法查询到的公司极可能是虚构的",
+          "method": "对前五大交易对手进行企查查查询，重点关注成立时间、经营范围、经营状态"
+        }
+      ],
+      "indicators_of_fake_flows": [
+        {
+          "indicator": "余额计算错误",
+          "severity": "critical",
+          "description": "期末余额 ≠ 期初余额 + 总收入 - 总支出",
+          "threshold": "差异 > 0.01元",
+          "fake_probability": "100%"
+        },
+        {
+          "indicator": "逻辑矛盾",
+          "severity": "critical",
+          "description": "净流入为负但余额增加",
+          "threshold": "净流入 < 0 且 期末余额 > 期初余额",
+          "fake_probability": "100%"
+        },
+        {
+          "indicator": "利息记录异常",
+          "severity": "critical",
+          "description": "日均余额高但利息为0",
+          "threshold": "日均余额 > 10万且利息 = 0",
+          "fake_probability": "95%"
+        },
+        {
+          "indicator": "交易过于集中",
+          "severity": "high",
+          "description": "单一对手占比过高",
+          "threshold": "单笔收入占总收入 > 70%",
+          "fake_probability": "85%"
+        },
+        {
+          "indicator": "收入中断",
+          "severity": "high",
+          "description": "连续多月无收入",
+          "threshold": "连续收入为0的月份数 ≥ 3个月",
+          "fake_probability": "80%"
+        },
+        {
+          "indicator": "对手信息设计痕迹",
+          "severity": "medium",
+          "description": "企业名称过于完整规范",
+          "threshold": "企业名称长度 > 20字符且包含完整行政区划",
+          "fake_probability": "70%"
+        },
+        {
+          "indicator": "对手无法查询",
+          "severity": "critical",
+          "description": "企查查无法查询到交易对手",
+          "threshold": "企查查查询无结果",
+          "fake_probability": "90%"
+        }
+      ],
+      "fake_flow_checklist": [
+        {
+          "step": 1,
+          "item": "余额数学验证",
+          "check": "计算 期末余额 - (期初余额 + 总收入 - 总支出)，差异是否为0",
+          "risk_level": "critical"
+        },
+        {
+          "step": 2,
+          "item": "逻辑一致性检查",
+          "check": "净流入符号与余额变化方向是否一致",
+          "risk_level": "critical"
+        },
+        {
+          "step": 3,
+          "item": "利息合理性验证",
+          "check": "日均余额与利息支出是否匹配",
+          "risk_level": "critical"
+        },
+        {
+          "step": 4,
+          "item": "交易集中度检查",
+          "check": "前五大收入对手占比，单一对手是否超过70%",
+          "risk_level": "high"
+        },
+        {
+          "step": 5,
+          "item": "收入连续性检查",
+          "check": "是否存在连续3个月以上收入为0",
+          "risk_level": "high"
+        },
+        {
+          "step": 6,
+          "item": "对手真实性验证",
+          "check": "通过企查查查询前五大交易对手",
+          "risk_level": "critical"
+        },
+        {
+          "step": 7,
+          "item": "交易摘要分析",
+          "check": "企业名称是否过于完整规范",
+          "risk_level": "medium"
+        },
+        {
+          "step": 8,
+          "item": "交易时间合理性",
+          "check": "周末、节假日是否有异常大额交易",
+          "risk_level": "medium"
+        },
+        {
+          "step": 9,
+          "item": "金额规律性检查",
+          "check": "整数金额占比是否过高（>60%）",
+          "risk_level": "medium"
+        },
+        {
+          "step": 10,
+          "item": "银行印章验证",
+          "check": "是否有银行公章和真伪验证码",
+          "risk_level": "critical"
+        }
+      ],
+      "fake_flow_classification": {
+        "low_level_fake": {
+          "description": "低级假流水",
+          "characteristics": [
+            "余额计算错误",
+            "逻辑矛盾明显",
+            "利息记录造假",
+            "存在多个破绽"
+          ],
+          "detection_method": "基础数学验证即可识别",
+          "confidence": "95%+"
+        },
+        "medium_level_fake": {
+          "description": "中级假流水",
+          "characteristics": [
+            "余额计算正确",
+            "部分数据虚构",
+            "交易对手部分虚构",
+            "业务逻辑部分合理"
+          ],
+          "detection_method": "需要交叉验证和实地调查",
+          "confidence": "70-90%"
+        },
+        "high_level_fake": {
+          "description": "高级假流水",
+          "characteristics": [
+            "数据完全一致",
+            "业务逻辑合理",
+            "需要深度验证",
+            "可能串通银行"
+          ],
+          "detection_method": "需要银行官方验真、现场调查、多方交叉验证",
+          "confidence": "50-70%"
+        }
+      },
+      "recommendations": [
+        "凡是余额计算错误的流水，直接判定为假流水",
+        "凡是净流入为负但余额增加的流水，直接判定为假流水",
+        "凡是日均余额高但利息为0的流水，直接判定为假流水",
+        "发现假流水迹象，立即要求提供官方银行流水（盖章）",
+        "对于可疑流水，必须进行银行官方验真",
+        "通过企查查验证主要交易对手真实性",
+        "发现造假的，立即拒绝贷款申请",
+        "保存假流水证据，防止同一客户再次申请"
+      ],
+      "code_updates": [
+        {
+          "file": "SKILL.md",
+          "section": "Step 1: 数据解析与验证",
+          "change_type": "add",
+          "content": "在'1.4 流水真实性验证'中增加假流水识别检查清单"
+        },
+        {
+          "file": "SKILL.md",
+          "section": "风险识别与预警",
+          "change_type": "add",
+          "content": "增加'假流水识别与风险等级'章节"
+        }
+      ],
+      "tags": ["假流水", "欺诈识别", "余额计算", "逻辑矛盾", "利息验证", "风险控制"],
+      "related_cases": []
+    }
+  ],
+  "summary": {
+    "total_cases": 1,
+    "fake_flow_cases": 1,
+    "key_lessons_learned": 7,
+    "new_indicators": 7,
+    "checklist_items": 10
+  }
+}
