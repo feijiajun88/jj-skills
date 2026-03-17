@@ -2,7 +2,7 @@
 name: bilibili-analyzer
 description: 自动分析B站视频内容，下载视频并拆解成帧图片，使用AI分析并生成详细的专题文档或实操教程。
 github_url: "https://github.com/feijiajun88/jj-skills"
-github_hash: 8d27fe01633bbdb40faa7b1ae42341c8224afc72
+github_hash: a3d1c3141658e88e8e6772248fcb72cb4fbb6028
 version: 1.0.0
 created_at: 2026-02-25
 updated_at: 2026-02-25

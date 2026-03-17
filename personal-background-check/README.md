@@ -1,19 +1,17 @@
 # 司法信息查询技能 (Judicial Information Query)
 
-> 通过中国执行信息公开网、失信被执行人名单等公开平台，查询个人司法信息，生成专业的背景调查分析报告。
+> 通过中国执行信息公开网和裁判文书网查询个人司法信息，自动重试直到获取查询结果，生成背景调查报告。
 
 ---
 
 ## 功能特点
 
-- ✅ **司法查询**：覆盖被执行人、失信名单、限制消费令、裁判文书等多个平台
-- ✅ **智能重试**：多策略自动回退，确保查询成功率
-- ✅ **人类模拟**：真实的人类行为模拟，规避反爬虫检测
+- ✅ **双站点查询**：同时查询执行信息公开网和裁判文书网
+- ✅ **自动重试**：查询失败自动重试，直到成功或达到最大尝试次数
 - ✅ **截图记录**：自动保存查询过程和结果截图
+- ✅ **命令行支持**：支持通过命令行参数输入姓名和身份证号
+- ✅ **反爬虫策略**：智能检测并规避反爬虫机制
 - ✅ **数据脱敏**：自动对敏感信息进行脱敏处理
-- 🆕 **裁判文书查询**：基于 Selenium 的真实查询，支持多策略
-- 🆕 **验证码识别**：支持第三方 OCR API 和人工介入
-- 🆕 **反爬虫策略**：隐身模式、人类行为模拟、请求节流等
 
 ---
 
@@ -29,25 +27,22 @@ pip install -r requirements.txt
 ### 2. 执行查询
 
 ```bash
-# 推荐使用智能查询脚本（自动查询直到获得结果）
-python scripts/intelligent_judicial_query.py
+# 使用简化双站点查询脚本（推荐）
+# 自动查询执行信息公开网和裁判文书网，直到获取结果
+python scripts/simple_dual_query.py --name "张三" --id-card "110101199001011234"
 
-# 测试优化功能
-python scripts/test_optimization.py
+# 无头模式（后台运行，不显示浏览器窗口）
+python scripts/simple_dual_query.py --name "张三" --id-card "110101199001011234" --headless
 
-# 测试网站访问
-python scripts/test_website_access.py
-
-# 使用增强版查询脚本
-python scripts/enhanced_judicial_query.py
+# 增加最大尝试次数（默认10次）
+python scripts/simple_dual_query.py --name "张三" --id-card "110101199001011234" --max-attempts 15
 ```
 
 ### 3. 查看报告
 
 生成的报告将保存在 `reports/` 目录下：
-- `智能司法查询结果.json` - JSON格式查询结果
-- `司法查询结果.json` - 原始查询数据
-- `screenshots/` - 查询过程截图
+- `查询结果_张三_20260304_103000.json` - JSON格式查询结果
+- `screenshots/` - 查询过程和结果截图
 
 ---
 
@@ -56,17 +51,18 @@ python scripts/enhanced_judicial_query.py
 ### 客户背景调查（KYC/尽职调查）
 
 ```bash
-# 编辑脚本中的查询信息
-# name = "客户姓名"
-# id_card = "客户身份证号"
-python scripts/intelligent_judicial_query.py
+# 直接通过命令行参数输入客户信息
+python scripts/simple_dual_query.py --name "客户姓名" --id-card "客户身份证号"
+
+# 示例
+python scripts/simple_dual_query.py --name "张三" --id-card "110101199001011234"
 ```
 
 ### 个人风险筛查
 
 ```bash
-# 编辑脚本中的查询信息
-python scripts/enhanced_judicial_query.py
+# 批量查询（配合shell脚本使用）
+python scripts/simple_dual_query.py --name "李四" --id-card "310101199002022345" --headless
 ```
 
 ---
@@ -80,25 +76,14 @@ personal-background-check/
 ├── requirements.txt                  # Python依赖
 │
 ├── scripts/                          # 查询脚本
-│   ├── __init__.py                  # 模块初始化
-│   ├── utils.py                     # 工具函数
-│   ├── selenium_judicial_query.py    # Selenium司法查询
-│   ├── improved_selenium_query.py    # 改进的Selenium查询
-│   ├── enhanced_judicial_query.py    # 增强型司法查询
-│   ├── intelligent_judicial_query.py # 智能司法查询（推荐）
-│   ├── query_executed_persons.py     # 查询被执行人
-│   ├── query_dishonest_list.py       # 查询失信名单
-│   ├── query_restriction_consumption.py  # 查询限制高消费
-│   ├── query_court_documents.py      # 查询裁判文书
-│   └── test_website_access.py        # 测试网站访问
+│   ├── __init__.py                   # 模块初始化
+│   ├── simple_dual_query.py          # 【推荐】简化双站点查询脚本
+│   ├── utils.py                      # 工具函数
+│   └── ...                           # 其他辅助脚本
 │
 ├── references/                       # 参考文档
-│   ├── platforms.md                  # 平台查询规则
-│   ├── api_credentials.md            # API配置指南
-│   └── report_specification.md       # 报告格式规范
 │
 ├── docs/                             # 文档目录
-│   └── 智能查询脚本使用说明.md      # 智能查询脚本使用说明
 │
 └── assets/                           # 资源目录
     └── report_template.md            # 报告模板
@@ -286,6 +271,7 @@ A: headless 模式是指不显示浏览器窗口，后台运行查询。
 
 | 版本 | 日期 | 更新内容 |
 |------|------|----------|
+| v3.0.0 | 2026-03-04 | 简化查询功能，只保留双站点查询；新增自动重试直到成功功能；优化命令行参数支持 |
 | v2.1.0 | 2026-02-06 | 新增裁判文书 Selenium 查询、验证码识别、反爬虫策略 |
 | v2.0.0 | 2026-02-03 | 重构为仅保留司法查询模块，添加智能查询脚本 |
 | v1.0.0 | 2025-02-02 | 初始版本，包含完整功能 |
